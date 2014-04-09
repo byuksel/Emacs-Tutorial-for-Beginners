@@ -1,0 +1,112 @@
+// Essential Emacs Reference with Emacs Tutorials
+//
+// Accompanies "Emacs Tutorial: A short introduction to Emacs (Part 1)"
+// http://youtu.be/ujODL7MD04Q
+//
+// Also, accompanies "Emacs Tutorial: A short introduction to Emacs (Part 3)"
+// http://youtu.be/paSgzPso-yc 
+//
+// File Commands:
+// --------------
+// C-x C-f : Opens a file, asks for the file name. If it cannot find the file, creates the file
+// C-x C-s : Saves the file without a prompt
+// C-x s   : Saves all files with a prompt  
+// C-s C-w : Saves the file with a different name. Asks you for the name.
+//
+// Everytime you save a file, Emacs creates another file with the name "filename~".
+// This tilde(~) file is the previous version of the file. It will be in the same dir.
+// Also, Emacs auto-saves everything you type to a file with the name "#filename#".
+// If you quit Emacs without saving, you can see this auto-save file. Let's do that.
+// C-x C-c : Quits Emacs.
+//
+// M-x recover-file: recovers the auto-saved file.
+//
+// Copy/Cut/Paste Commands:
+// ------------------------
+// C-y     : Pastes whatever is in the clipboard at the cursor.
+//           Subsequent C-y's will keep on pasting.
+// C-space : Starts marking/highligting a region.
+// C-k     : Kills/deletes the whole line, puts it into the clipboard.
+// M-w     : Copies this region into the clipboard.
+// C-w     : Cuts this region into the clipboard (deletes the region and copies it to clipbrd)
+//
+// Saving a region involves hitting C-space to start selecting, and then hitting M-w or C-w to
+// copy or cut it into the clipboard, and then hitting C-y to paste it. 
+// If you dont like the region you are selecting, hit C-g.
+// C-g     : Always quits your command.
+//
+// Cursor Commands:
+// ----------------
+// C-a     : Beginning of line
+// C-e     : End of line
+// M->     : End of buffer
+// M-<     : Beginning of buffer
+//
+// C-/     : Undo
+// C-g C-/ : Redo
+//
+// Buffer Management Commands:
+// ---------------------------
+// C-x b   : Switches buffers, asks you which buffer to switch to.
+// C-x C-b : Switches buffers, but shows you the list of buffers in a new window
+// 
+// Hit C-x o (other window) to go the other window and hit <enter> on the buffer you want to
+// switch to.
+// C-x 0   : Will close that window
+// C-x 1   : Will leave only one window
+// C-x 2   : Will make a horizontal cut and show a secondary window
+// C-x 3   : Will make a vertical cut and show a secondary window
+//
+// Commands:
+// ---------
+// Emacs understands elisp. It is a dialect of lisp.
+// M-x command-name : Will execute the command. 
+// M-x pwd  : Prints the working directory
+// M-x indent-region : Indents the region.
+// 
+// Hit M-x and type anything and hit TAB to auto-complete the commands (or to see the available
+// commands. )
+//
+// You can hit M-: to go to the evaluate buffer where you can evaluate a lisp statement.
+// For example, "setq" sets a variable to a value. 
+//
+// With C-h v, you can see the value of a variable.
+// 
+// You can also use C-x C-e to evaluate (i.e. run) a lisp statement at the cursor.
+// (setq your_var '124)
+// your_var my_var
+//
+// ~/.emacs file and Packages
+// --------------------------
+// Emacs is very versatile, you can program it, and add new abilities. Let's say that we
+// develop a new language that Emacs does not know about. All we have to do is to write
+// a "package" so that Emacs can color-code it for example. Or even write a package for
+// Emacs to auto-complete keywords in this language. This makes Emacs a platform for editing
+// many different things. 
+// 
+// ~/.emacs file (A file called ".emacs" under your home directory) holds all the elisp
+// statements that is run when you start your Emacs. 
+// ~/.emacs.d directory (A directory called ".emacs.d" under your home directory) holds
+// all the packages (files of lisp commands/statements) for Emacs.
+// 
+// You load a package by refering it in a "require" statement. 
+//
+// For this example, I already have downloaded a package called "auto-complete" and put it
+// under ~/.emacs.d. I will now add a line in ~/.emacs file so that it will start every time.
+// Let's first test it.
+whi?? // no autocomplete
+// 
+for // auto complete works once we add these two lines to our ~/.emacs file
+//
+// (require 'auto-complete)
+// (global-auto-complete-mode t)
+//
+// And then, we save .emacs file, and restart Emacs. auto-complete should be on for everything.
+//
+// We can also add the following line to ~/.emacs file so that C-c j becomes M-x goto-line each
+// time Emacs starts:
+// 
+// (global-set-key (kbd "C-c j") 'goto-line)
+// 
+//
+// For your reference, M-x goto-line goes to a line!
